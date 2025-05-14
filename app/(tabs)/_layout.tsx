@@ -1,43 +1,69 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image } from 'react-native'; // Importing Image component
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+
+    <Tabs screenOptions={{ headerShown: false, tabBarActiveTintColor: '#9D1616' }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/home.png')} // Replace with your image path
+              style={{ width: size, height: size, tintColor: color }} // Adjust size and color
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="search"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Search',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/magnifying-glass.png')} // Replace with your image path
+              style={{ width: size, height: size, tintColor: color }} // Adjust size and color
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="addPost"
+        options={{
+          title: 'Add Post',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/add.png')} // Replace with your image path
+              style={{ width: size, height: size, tintColor: color }} // Adjust size and color
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="playVideo"
+        options={{
+          title: 'Reels',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/reel.png')} // Replace with your image path
+              style={{ width: size, height: size, tintColor: color }} // Adjust size and color
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/post1.jpg')} // Replace with your image path
+              style={{ width: size, height: size, tintColor: color }} // Adjust size and color
+            />
+          ),
         }}
       />
     </Tabs>

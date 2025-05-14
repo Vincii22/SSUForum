@@ -11,6 +11,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "router": {
+        "initialRouteName": "login"
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
